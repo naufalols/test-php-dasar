@@ -1,14 +1,23 @@
 <?php
+$data = array();
+for ($i=1; $i <= 64; $i++) { 
+    $data[] = $i;
+}
 
-$data = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30);
-print_r($data);
-
-echo "<table>"; 
+echo "<table style='padding: 8px 20px;border-collapse: collapse;'>"; 
+echo "<tr>";
+$count = 0;
 for ($i=0; $i < count($data); $i++) { 
-    if ($i >= 16) {
-        echo "<tr>";
-        echo "<td>$data[$i]</td>";
+    if (($count%8) == 0) {
         echo "</tr>";
     }
+    if (($count%3) == 2) {
+        echo "<td style='padding: 8px 20px;border: 1px solid black;'>".$data[$i]."</td>";
+    } elseif($data[$i]%4 == 0) {
+            echo "<td style='padding: 8px 20px;border: 1px solid black;'>".$data[$i]."</td>";
+    } else {
+        echo "<td style='padding: 8px 20px;border: 1px solid black;background-color:black;color:white;'>".$data[$i]."</td>";
+    }
+    $count+=1;
 }
 echo "</table>"; 
